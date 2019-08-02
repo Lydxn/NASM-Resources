@@ -6,7 +6,12 @@ section .text
         
 _start:
         mov rax, 7                      ; set the digit to print as '7'
-        call _printDigit
+        call _printDigit                ; call subroutine '_printDigit'
+        
+        ; perform sys_exit
+        mov rax, 60
+        mov rdi, 0
+        syscall
 
 _printDigit:
         add rax, 48                     ; 48 is the value of the character '0' in ASCII, '1' is 49...
@@ -17,8 +22,4 @@ _printDigit:
         mov rdi, 1
         mov rsi, digit
         mov rdx, 2
-        syscall
-        
-        mov rax, 60
-        mov rdi, 0
         syscall
