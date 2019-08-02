@@ -1,6 +1,5 @@
 section .bss
-        digit    resb 100               ; stores string to print integer
-        digitPos resb 8                  ; stores current position of string
+        digit resb 100                  ; stores string to print integer
         
 section .text
         global _start
@@ -19,29 +18,25 @@ _printInteger:
         mov rcx, digit                  ; start at beginning of integer
         mov rbx, 10                     ; move newline into rbx
         mov [rcx], rbx                  ; move newline into rcx
-        inc rcx                         ; (increment
-        mov [digitPos], rcx             ; 'digitPos')
+        inc rcx                         ; increment rcx (position)
 
-; loop to store value of integer in ASCII
+; loop to store value of integer
 _loopStore:
         xor rdx, rdx                    ; zero-out rdx register
         mov rbx, 10                     ; (divide rbx
         div rbx                         ; by 10)
-        push rax                        ; store the value of rax
+
         add rdx, 48                     ; rdx is the remainder of rax / rbx, and add 48 to give its ASCII value
-        
-        mov rcx, [digitPos]             ; increment 'digitPos' position
-        mov [rcx], dl                     ; load the character of rdx
-        inc rcx                         ; (increment
-        mov [digitPos], rcx             ; 'digitPos')
-        
-        pop rax                         ; get rax value
+
+        mov [rcx], dl                   ; load the character of rdx
+        inc rcx                         ; increment position
+
         cmp rax, 0                      ; (continue loop until
         jne _loopStore                  ; rax becomes 0)
 
 ; loop to print string backwards
 _loopPrint:
-        mov rcx, [digitPos]             ; move 'digitPos' to rcx
+        push rcx                        ; push rcx into stack
         
         ; perform sys_write
         mov rax, 1
@@ -50,12 +45,8 @@ _loopPrint:
         mov rdx, 1
         syscall
         
-        ; decrement 'digitPos'
-        mov rcx, [digitPos]
-        dec rcx
-        mov [digitPos], rcx
-        
-        ; continue loop until beginning of string
-        cmp rcx, digit
-        jge _loopPrint
+        pop rcx                        ; get back position
+        dec rcx                        ; decrement position
+        cmp rcx, digit                 ; (continue loop until beginning
+        jge _loopPrint                 ; beginning of string)
         ret
