@@ -184,7 +184,7 @@ jg _doThis
 
 ```
 section .data
-    filename db "myfile.txt", 0                ; file name to write to, and null-terminated character
+    filename db "myfile.txt", 0                ; null-terminated file string
     text     db "Here's some text."            ; text to write to file
     textLen  equ $ - text                      ; length of text to write
  
