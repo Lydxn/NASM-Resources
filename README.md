@@ -106,3 +106,10 @@ jg _doThis
 | adc a, b | - | a = a + b + CF |
 | sbb a, b | - | a = a - b - CF |
 
+<h2>Stack Operations:</h2>
+
+| Operation | Effect |
+| --- | --- |
+| `push reg/value` | Pushes a value onto the stack |
+| `pop reg` | Pops a value off the stack and stores it in 'reg' |
+| `mov reg, [rsp]` | Stores the peek value in 'reg' |
