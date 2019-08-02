@@ -13,7 +13,8 @@ _start:
         mov rax, 60
         mov rdi, 0
         syscall
-        
+
+; prints integer in rax
 _printInteger:
         mov rcx, digit                  ; start at beginning of integer
         mov rbx, 10                     ; move newline into rbx
