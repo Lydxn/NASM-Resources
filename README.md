@@ -153,3 +153,5 @@ jg _doThis
 <h2>Miscellanous:</h2>
 
 - Use `%include 'file.h'` to include other NASM files
+- When using `mul` or `div`, the result is stored int `rdx:rax`,  where rdx is the high bits, and rax is the low bits
+
