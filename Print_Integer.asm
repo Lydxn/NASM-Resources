@@ -31,13 +31,13 @@ _loopStore:
         add rdx, 48                     ; rdx is the remainder of rax / rbx, and add 48 to give its ASCII value
         
         mov rcx, [digitPos]             ; increment 'digitPos' position
-        mov rcx, dl                     ; load the character of rdx
+        mov [rcx], dl                     ; load the character of rdx
         inc rcx                         ; (increment
         mov [digitPos], rcx             ; 'digitPos')
         
         pop rax                         ; get rax value
         cmp rax, 0                      ; (continue loop until
-        jne _printIntegerLoop1          ; rax becomes 0)
+        jne _loopStore                  ; rax becomes 0)
 
 ; loop to print string backwards
 _loopPrint:
@@ -57,5 +57,5 @@ _loopPrint:
         
         ; continue loop until beginning of string
         cmp rcx, digit
-        jge _printIntegerLoop2
+        jge _loopPrint
         ret
