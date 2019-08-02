@@ -6,6 +6,9 @@ section .text
         
 _start:
         mov rax, 7                      ; set the digit to print as '7'
+        call _printDigit
+
+_printDigit:
         add rax, 48                     ; 48 is the value of the character '0' in ASCII, '1' is 49...
         mov [digit], al                 ; move lower byte of rax register to address 'digit'
         
