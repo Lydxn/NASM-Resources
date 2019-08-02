@@ -51,7 +51,7 @@ List of instructions: https://www.felixcloutier.com/x86/
 
 - Allow programs to take different paths based on certain conditions
 - They are done on registers
-- The format of <b>cmp</b> is `cmp register, value`
+- The format of <b>cmp</b> is typically `cmp register, value/register`
 - After a comparison, certain flags are set
 
 ```
@@ -87,3 +87,21 @@ je _doThis
 cmp rax, rbx
 jg _doThis
 ```
+
+<h2>Math Operations:</h2>
+
+- used to mathematically manipulate registers
+- The format of a math operation is typically `oper register, value/register`
+- The result of the operation is stored in the first register
+
+| Name (unsigned) | Name (signed) | Description |
+| --- | --- | --- |
+| add a, b | - | a = a + b |
+| sub a, b | - | a = a - b |
+| mul reg | imul reg | rax = rax * reg |
+| div reg | idiv reg | rax = rax / reg |
+| neg reg | - | reg = -reg |
+| inc reg | - | reg = reg + 1 |
+| dec reg | - | reg = reg - 1 |
+| adc a, b | - | a = a + b + CF |
+| sbb a, b | - | a = a - b - CF |
