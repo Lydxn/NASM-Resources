@@ -1,5 +1,5 @@
 section .bss
-        digit resb 100                  ; stores string to print integer
+        digitSpace resb 100             ; stores string to print integer
         
 section .text
         global _start
@@ -15,7 +15,7 @@ _start:
 
 ; prints integer in rax
 _printInteger:
-        mov rcx, digit                  ; start at beginning of integer
+        mov rcx, digitSpace             ; start at beginning of integer
         mov rbx, 10                     ; move newline into rbx
         mov [rcx], rbx                  ; move newline into rcx
         inc rcx                         ; increment rcx (position)
@@ -47,6 +47,6 @@ _loopPrint:
         
         pop rcx                        ; get back position
         dec rcx                        ; decrement position
-        cmp rcx, digit                 ; (continue loop until beginning
-        jge _loopPrint                 ; beginning of string)
+        cmp rcx, digitSpace            ; (continue loop until 
+        jge _loopPrint                 ; end of string)
         ret
