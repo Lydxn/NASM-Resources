@@ -105,3 +105,4 @@ jg _doThis
 | dec reg | - | reg = reg - 1 |
 | adc a, b | - | a = a + b + CF |
 | sbb a, b | - | a = a - b - CF |
+
