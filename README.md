@@ -1,4 +1,4 @@
-<h2>Resources<h2>
+<h2>Resources</h2>
 
 Most of these resources were learnt from kupala's YouTube playlist:
 <br>https://www.youtube.com/playlist?list=PLetF-YjXm-sCH6FrTz4AQhfH6INDQvQSn
