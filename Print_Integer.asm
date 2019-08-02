@@ -24,7 +24,7 @@ _printInteger:
 
 ; loop to store value of integer in ASCII
 _loopStore:
-        mov rdx, rdx                    ; zero-out rdx register
+        xor rdx, rdx                    ; zero-out rdx register
         mov rbx, 10                     ; (divide rbx
         div rbx                         ; by 10)
         push rax                        ; store the value of rax
