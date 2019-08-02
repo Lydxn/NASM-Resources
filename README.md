@@ -54,12 +54,14 @@ List of instructions: https://www.felixcloutier.com/x86/
 - The format of <b>cmp</b> is typically `cmp register, value/register`
 - After a comparison, certain flags are set
 
+<h3>Example:</h3>
+
 ```
 cmp rax, 23
 cmp rax, rbx
  ```
  
-<h3>Conditional Jumps:</h3>
+<h2>Conditional Jumps:</h2>
  
 - After a comparison, a conditional jump can be made
 - They are based on the status of the flags
@@ -78,6 +80,8 @@ cmp rax, rbx
 | jno | - | Not Overflow |
 | js | - | Jump If Signed |
 | jns | - | Jump If Not Signed |
+
+<h3>Examples:</h3>
 
 ```
 cmp rax, 23
@@ -113,3 +117,39 @@ jg _doThis
 | `push reg/value` | Pushes a value onto the stack |
 | `pop reg` | Pops a value off the stack and stores it in 'reg' |
 | `mov reg, [rsp]` | Stores the peek value in 'reg' |
+
+<h2>Macros:</h2>
+
+- An instruction that expands into a predefined set of instructions to perform a particular task
+
+<h3>Defining Macros:</h3>
+
+```
+%macro <name> <argc>
+    ...
+    <macro body>
+    ...
+%endmacro
+```
+
+``` html
+<name>
+    Name of macro
+<argc>
+    Number of arguments
+<macro body>
+    Definition of macro
+```
+
+<h3>Example:</h3>
+
+```
+; a NASM macro to add two numbers and store it in rax
+%macro sumTwoNumbers 2
+    mov rax, %1        ; move argument 1 into rax
+    add rax, %2        ; add rax and argument 2 and store it in rax
+```
+
+<h2>Miscellanous:</h2>
+
+- Use `%include 'file.h'` to include other NASM files
