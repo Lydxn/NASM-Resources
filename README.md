@@ -171,8 +171,49 @@ jg _doThis
 %endmacro
 ```
 
+<h2>File Permissions:</h2>
+
+- We need to get the permission value (octal) first
+- r = read, w = write, x = execute, sst = special attributes
+
+![permissions](https://www.oreilly.com/library/view/linux-pocket-guide/9780596806347/httpatomoreillycomsourceoreillyimages305342.png)
+
+<h2>Write to File:</h2>
+
+<h3>Example:</h3>
+
+```
+section .data
+    filename db "myfile.txt", 0                ; file name to write to, and null-terminated character
+    text     db "Here's some text."            ; text to write to file
+    textLen  equ $ - text                      ; length of text to write
+ 
+section .text
+    global _start
+    
+_start:
+    mov rax, 2                                 ; argument to call 'sys_open'
+    mov rdi, filename                          ; argument for file name
+    mov rsi, 64+1                              ; argument for create (64) and write (1) flag
+    mov rdx, 0644o                             ; argument for file permission value, suffix 'o' for octal
+    syscall
+    
+    mov rdi, rax                               ; argument for file descriptor (stored in rax)
+    mov rax, 1                                 ; argument to call 'sys_write'
+    mov rsi, text                              ; argument for text to write to file
+    mov rdx, textLen                           ; argument for text length (textLen)
+    syscall
+    
+    mov rax, 3                                 ; argument to call 'sys_close'
+    syscall
+    
+    mov rax, 60                                ; argument to call 'sys_exit'
+    mov rdi, 0                                 ; argument for error code (0)
+    syscall
+```
+
+
 <h2>Miscellanous:</h2>
 
 - Use `%include 'file.h'` to include other NASM files
 - When using `mul` or `div`, the result is stored int `rdx:rax`,  where rdx is the high bits, and rax is the low bits
-
