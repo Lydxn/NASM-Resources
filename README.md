@@ -1,11 +1,30 @@
-<b>Most of these resources were learnt from kupala's YouTube playlist:</b>
+<h2>Resources<h2>
+
+Most of these resources were learnt from kupala's YouTube playlist:
 <br>https://www.youtube.com/playlist?list=PLetF-YjXm-sCH6FrTz4AQhfH6INDQvQSn
+<br>
+<br>X86 Assembly Wiki:
+<br>https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture
 
-<h2>A list of registers:</h2>
+<h2>Registers:</h2>
 
-![Registers](https://i.stack.imgur.com/N0KnG.png)
+![list of registers](https://i.stack.imgur.com/N0KnG.png)
+
+<h3>General Purpose Registers:</h3>
+
+| Symbol | Meaning | Use |
+| --- | --- | --- |
+| RAX | Accumulator | Arithemtic Operations |
+| RBX | Base | Pointer to Data |
+| RCX | Counter | Shift/Rotate Instructions or Loops |
+| RDX | Data | Arithemtic or I/O Operations |
+| RSI | Source Index | Pointer to Source in Stream Operations |
+| RDI | Destination Index | Pointer to Destination in Stream Operations |
+| RSP | Stack Pointer | Pointer to the Top of the Stack |
+| RBP | Stack Base Pointer | Point to the Base of the Stack |
 
 <h2>System Call:</h2>
+
 A very useful Linux system call table: https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/
 
 | rax | System call | rdi | rsi | rdx |
@@ -13,7 +32,7 @@ A very useful Linux system call table: https://blog.rchapman.org/posts/Linux_Sys
 | 0 | sys_read | #filedescriptor | $buffer | #count |
 | 1 | sys_write | #filedescriptor | $buffer | #count |
 | 2 | sys_open | $filename | #flag | #mode |
-| 60 | sys_exit | #error_code | - | - |
+| ... | ... | ... | ... | ... | ... |
 
 <h2>Flags:</h2>
 
@@ -31,6 +50,7 @@ A very useful Linux system call table: https://blog.rchapman.org/posts/Linux_Sys
 | IF | Interrupt |
 | DF | Direction |
 | OF | Overflow |
+| ... | ... |
 
 <h2>Pointers:</h2>
 
@@ -39,7 +59,7 @@ A very useful Linux system call table: https://blog.rchapman.org/posts/Linux_Sys
 
 | Name | Meaning | Description |
 | --- | --- | --- |
-| rip (eip, ip) | Index Pointer | Points to next address to be executed in control flow |
+| rip (eip, ip) | Instruction Pointer | Points to next address to be executed in control flow |
 | rsp (esp, sp) | Stack Pointer | Points to the top address of the stack |
 | rbp (ebp, bp) | Stack Base Pointer | Points to the bottom of the stack |
 
@@ -148,6 +168,7 @@ jg _doThis
 %macro sumTwoNumbers 2
     mov rax, %1        ; move argument 1 into rax
     add rax, %2        ; add rax and argument 2 and store it in rax
+%endmacro
 ```
 
 <h2>Miscellanous:</h2>
