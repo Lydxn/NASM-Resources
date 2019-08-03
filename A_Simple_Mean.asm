@@ -1,8 +1,14 @@
 ; for DMOJ
 
 section .data
-        in3format db "%ld %ld %ld", 0           ; scanf format to scan 3 integers
-        outformat db "%ld", 10, 0               ; printf format to print an integer and a newline
+        in3format db "%d %d %d", 0              ; scanf format to scan 3 integers
+        outformat db "%d", 10, 0                ; printf format to print an integer and a newline
+
+section .bss
+        ; declare A, B, C with 8 bytes
+        A resb 8
+        B resb 8
+        C resb 8
 
 section .text
         global main
@@ -14,17 +20,17 @@ main:
     
         ; perform scanf
         mov rdi, in3format
-        lea rsi, [rsp]
-        lea rdx, [rsp + 8]
-        lea rcx, [rsp + 16]
+        mov rsi, A
+        mov rdx, B
+        mov rcx, C
         xor rax, rax                            ; zero-out rax
         call scanf
     
         ; calculate mean and store in rax
         xor rdx, rdx                            ; zero-out rdx
-        mov rax, [rsp]
-        add rax, [rsp + 8]
-        add rax, [rsp + 16]
+        mov rax, [A]
+        add rax, [B]
+        add rax, [C]
         mov rcx, 3
         div rcx
     
