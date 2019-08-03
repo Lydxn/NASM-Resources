@@ -1,4 +1,4 @@
-; libc
+; using NASM 32-bit
 
 section .data
     informat   db "%d", 0                 ; scanf format to scan an integer
