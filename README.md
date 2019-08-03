@@ -212,6 +212,18 @@ _start:
     syscall
 ```
 
+<h2>Size Operands:<h2>
+ 
+| Size (bits) | Operands |
+| --- | --- |
+| 8 | `byte, DB, RESB` |
+| 16 | `word, DW, RESW` |
+| 32 | `dword, DD, RESD` |
+| 64 | `qword, DQ, RESQ` |
+| 80 | `tword, DT, REST` |
+| 128 | `oword, DO, DDQ, RESO, RESDQ` |
+| 256 | `yword, DY, RESY` |
+| 512 | `zword, DZ, RESZ` |
 
 <h2>Miscellanous:</h2>
 
