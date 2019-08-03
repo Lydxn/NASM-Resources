@@ -212,7 +212,7 @@ _start:
     syscall
 ```
 
-<h2>Size Operands:<h2>
+<h2>Size Operands:</h2>
  
 | Size (bits) | Operands |
 | --- | --- |
