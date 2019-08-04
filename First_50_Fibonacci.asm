@@ -5,27 +5,27 @@ section .text
 	global _start
 
 _start:
-    mov rcx, 50                    ; set rcx to '50' (number of fibonacci iterations)
-    mov r8, 0                      ; set r8 to '0'
-    mov r9, 1                      ; set r9 to '1'
-    call _fib                      ; call '_fib' subroutine to calculate fibonacci
+    	mov rcx, 50                    ; set rcx to '50' (number of fibonacci iterations)
+    	mov r8, 0                      ; set r8 to '0'
+    	mov r9, 1                      ; set r9 to '1'
+    	call _fib                      ; call '_fib' subroutine to calculate fibonacci
     
-    ; perform sys_exit
+    	; perform sys_exit
 	mov rax, 60
-    mov rdi, 0
-    syscall
+    	mov rdi, 0
+    	syscall
     
 _fib:
-    push rcx                       ; preserve rcx
-    call _printInteger             ; call subroutine to print a 64-bit integer
-    pop rcx                        ; retrieve rcx
+    	push rcx                       ; preserve rcx
+    	call _printInteger             ; call subroutine to print a 64-bit integer
+    	pop rcx                        ; retrieve rcx
     
-    mov rax, r8                    ; (set rax equal
-    add rax, r9                    ; to r8 + r9)
-    mov r8, r9                     ; move r9 into r8
-    mov r9, rax                    ; move rax into r9
+    	mov rax, r8                    ; (set rax equal
+    	add rax, r9                    ; to r8 + r9)
+    	mov r8, r9                     ; move r9 into r8
+    	mov r9, rax                    ; move rax into r9
     
-    loop _fib                      ; loop 'rcx' times
+    	loop _fib                      ; loop 'rcx' times
     
 ; prints integer in r8
 _printInteger:
