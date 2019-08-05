@@ -1,5 +1,5 @@
 section .data
-    digitSpace db 0
+    	digit db 0
 
 section .text
 	global _start
@@ -29,7 +29,7 @@ _fib:
     
 ; prints integer in r8
 _printInteger:
-        mov rcx, digitSpace             ; start at beginning of integer
+        mov rcx, digit                  ; start at beginning of integer
         mov rbx, 10                     ; move newline into rbx
         mov [rcx], rbx                  ; move newline into rcx
         inc rcx                         ; increment rcx (position)
@@ -61,6 +61,6 @@ _loopPrint:
         
         pop rcx                        ; get back position
         dec rcx                        ; decrement position
-        cmp rcx, digitSpace            ; (continue loop until 
+        cmp rcx, digit                 ; (continue loop until 
         jge _loopPrint                 ; end of string)
         ret
